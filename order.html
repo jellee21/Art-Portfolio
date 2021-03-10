@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<!-- main (center website) -->
+<div class="main">
+
+<a href="index.html"><img src="logo.png" width="25%" id="logo"></a>
+<!--nav buttons--> 
+<div class="topnav" id="myTopnav">
+  <a href="index.html">Home</a>
+  <a href="order.html" class="topactive">Order Form</a>
+  <a href="contact.html">Contact</a>
+  <a href="about.html">About</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+<hr>
+
+<h2>ORDER FORM</h2>
+<p>Comission prices will vary depending on the complexity of the painting.</p>
+
+<!-- Portfolio Gallery Grid -->
+<div class="row">
+    <div class="column">
+      <div class="content">
+        <img src="bw.jpg" alt="Mountains" style="width:100%">
+        <h3>Black and White $5</h3>
+        <p>Includes a simple lined image with a blank background.</p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="content">
+        <img src="flat.jpg" alt="Lights" style="width:100%">
+        <h3>Flat Colors</h3>
+        <p>Includes flate coloring with a background color of your choice.</p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="content">
+        <img src="rose.jpg" alt="Nature" style="width:100%">
+        <h3>Rendered</h3>
+        <p>Includes a fully rendered image with a background.</p>
+      </div>
+    </div>
+  </div>
+
+<form name="contact" method="post">
+	<label>Full Name</label>
+	<input type="text" name="name"></br>
+	<label>Subject</label>
+	<input type="text" name="subject"></br>
+	<label>Phone Number</label>
+	<input type="text" name="phone"></br>
+	<label>Description</label>
+	<textarea name="message"></textarea></br>
+
+	<input type="submit" name="send" value="Send Message">
+</form>
+
+<!-- END MAIN -->
+</div>
+<script src="script.js"></script>
+</body>
+</html>
