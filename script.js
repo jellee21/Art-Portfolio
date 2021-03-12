@@ -8,20 +8,21 @@ function myFunction() {
     }
   }
 
-filterSelection("all")
+filterSelection("all") //execute funtions and show all columns
 function filterSelection(c) {
   var x, i;
   x = document.getElementsByClassName("column");
-  if (c == "all") c = "";
+  if (c == "all") c = ""; 
+  // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
   for (i = 0; i < x.length; i++) {
-    w3RemoveClass(x[i], "show");
-    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+    RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) AddClass(x[i], "show");
   }
 }
 
-//don't forget to replace the w3 fuction name
-function w3AddClass(element, name) {
-  var i, arr1, arr2;
+//shows filtered elements
+function AddClass(element, name) { 
+  var i, arr1, arr2; 
   arr1 = element.className.split(" ");
   arr2 = name.split(" ");
   for (i = 0; i < arr2.length; i++) {
@@ -29,7 +30,8 @@ function w3AddClass(element, name) {
   }
 }
 
-function w3RemoveClass(element, name) {
+//hide elements not selected
+function RemoveClass(element, name) {
   var i, arr1, arr2;
   arr1 = element.className.split(" ");
   arr2 = name.split(" ");
@@ -54,34 +56,36 @@ for (var i = 0; i < btns.length; i++) {
 }
 
 var form = document.forms["contact"];
-form.addEventListener('submit',contact_submit,false);
+	form.addEventListener('submit',contact_submit,false);
 
-function contact_submit(e) {
-    // Stop Form From Submitting
-    e.preventDefault();
+	function contact_submit(e) {
+		// Stop Form From Submitting
+		e.preventDefault();
 
-    // Set Initial Variables
-    var target = e.target || e.srcElement;
-    var to = 'someone@example.com';
-    var uri = 'mailto:' + to;
-    var body = '';
+		// Set Initial Variables
+		var target = e.target || e.srcElement;
+		var to = 'jenfucious24@gmail.com'; //set my email as recipient
+		var uri = 'mailto:' + to; //declare malito URI 
+		var body = '';
 
-    // Set Form Values to Variables
-    var name = target.elements['name'].value;
-    var subject = target.elements['subject'].value;
-    var phone = target.elements['phone'].value;
-    var message = target.elements['message'].value;
+		// Set Form Values to Variables
+		var name = target.elements['name'].value;
+		var subject = target.elements['subject'].value;
+		var phone = target.elements['phone'].value;
+    var comp = target.elements['comp'].value; //comp short for complexity
+		var message = target.elements['message'].value;
 
-    // Build Body / Message with all Input Fields
-    body += message + "\r\n\r\n";
-    body += "Name: " + name + "\r\n";
-    body += "Phone Number: " + phone + "\r\n";
+		// Build Body / Message with all Input Fields
+		body += message + "\r\n\r\n";
+		body += "Name: " + name + "\r\n";
+		body += "Phone Number: " + phone + "\r\n";
+    body += "Complexity: " + comp + "\r\n";
 
-    // Build final Mailto URI
-    uri += '?subject=' + encodeURIComponent(subject);
-    uri += '&body=' + encodeURIComponent(body);
+		// Build final Mailto URI
+		uri += '?subject=' + encodeURIComponent(subject);
+		uri += '&body=' + encodeURIComponent(body);
+    
 
-    // Open Mailto in New Window / Tab
-    window.open(uri,'_blank');
-}
-
+		// Open Mailto in New Window / Tab
+		window.open(uri,'_blank');
+	}

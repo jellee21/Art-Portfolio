@@ -26,49 +26,96 @@
 </div>
 <hr>
 
-<h2>ORDER FORM</h2>
-<p>Comission prices will vary depending on the complexity of the painting.</p>
+<h1>ORDER FORM</h1>
+<p id="txt">Comission prices will vary depending on the complexity of the painting.</p>
 
 <!-- Portfolio Gallery Grid -->
 <div class="row">
     <div class="column">
       <div class="content">
-        <img src="bw.jpg" alt="Mountains" style="width:100%">
+        <img src="sketch2.JPG" alt="Mountains" style="width:100%">
         <h3>Black and White $5</h3>
-        <p>Includes a simple lined image with a blank background.</p>
+        <p>A simple lined image with a blank background.</p>
       </div>
     </div>
     <div class="column">
       <div class="content">
-        <img src="flat.jpg" alt="Lights" style="width:100%">
-        <h3>Flat Colors</h3>
-        <p>Includes flate coloring with a background color of your choice.</p>
+        <img src="middle3.JPG" alt="Lights" style="width:100%">
+        <h3>Flat Colors $10</h3>
+        <p>Flat colors with a background color of your choice.</p>
       </div>
     </div>
     <div class="column">
       <div class="content">
-        <img src="rose.jpg" alt="Nature" style="width:100%">
-        <h3>Rendered</h3>
-        <p>Includes a fully rendered image with a background.</p>
+        <img src="final.JPG" alt="Nature" style="width:100%">
+        <h3>Rendered $15</h3>
+        <p>A fully rendered image with a background.</p>
       </div>
     </div>
   </div>
 
-<form name="contact" method="post">
-	<label>Full Name</label>
-	<input type="text" name="name"></br>
-	<label>Subject</label>
-	<input type="text" name="subject"></br>
-	<label>Phone Number</label>
-	<input type="text" name="phone"></br>
-	<label>Description</label>
-	<textarea name="message"></textarea></br>
+<div id="container">
+  <form name="contact" method="post">
+    <label>Full Name</label>
+    <input type="text" name="name" placeholder="name..." autofocus>
+    <label>Subject</label>
+    <input type="text" name="subject" placeholder="Subject of email...">
+    <label>Phone Number</label>
+    <input type="text" name="phone" placeholder="Phone...">
+  
+    <label for="comp">Complexity Level</label>
+    <select id="comp" name="comp">
+      <option value="Black and White">Black and White</option>
+      <option value="Flat Colors">Flat Colors</option>
+      <option value="Rendered">Rendered</option>
+    </select>
+  
+    <label>Description</label>
+    <textarea name="message" placeholder="Describe the drawing..." style="height:200px"></textarea>
+  
+    <input type="submit" name="send" value="Send Message">
+  </form>
+  
 
-	<input type="submit" name="send" value="Send Message">
-</form>
+</div>
 
 <!-- END MAIN -->
 </div>
 <script src="script.js"></script>
+<script>
+  var form = document.forms["contact"];
+	form.addEventListener('submit',contact_submit,false);
+
+	function contact_submit(e) {
+		// Stop Form From Submitting
+		e.preventDefault();
+
+		// Set Initial Variables
+		var target = e.target || e.srcElement;
+		var to = 'jenfucious24@gmail.com';
+		var uri = 'mailto:' + to;
+		var body = '';
+
+		// Set Form Values to Variables
+		var name = target.elements['name'].value;
+		var subject = target.elements['subject'].value;
+		var phone = target.elements['phone'].value;
+    var comp = target.elements['comp'].value;
+		var message = target.elements['message'].value;
+
+		// Build Body / Message with all Input Fields
+		body += message + "\r\n\r\n";
+		body += "Name: " + name + "\r\n";
+		body += "Phone Number: " + phone + "\r\n";
+    body += "Complexity Level: " + comp + "\r\n";
+
+		// Build final Mailto URI
+		uri += '?subject=' + encodeURIComponent(subject);
+		uri += '&body=' + encodeURIComponent(body);
+
+		// Open Mailto in New Window / Tab
+		window.open(uri,'_blank');
+	}
+</script>
 </body>
 </html>
